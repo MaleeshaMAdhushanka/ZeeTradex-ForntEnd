@@ -9,6 +9,8 @@ import {
    } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button";
 import { DragHandleHorizontalIcon } from "@radix-ui/react-icons"; // Import the icon from the correct library
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import Sidebar from "./Sidebar";
 
    
 
@@ -26,13 +28,36 @@ const Navbar = () => {
                          <DragHandleHorizontalIcon className='h-20 w-10'/>
                     </Button>
                  </SheetTrigger>
-                <SheetContent  className="w-72 border-r-0 flex flex-col justify-center" 
+
+                <SheetContent  className="w-72 border-r-0 flex flex-col justify-center  bg-gray-900 text-gray-200"
+                // className="w-72 border-r-0 flex flex-col justify-center bg-gray-900 text-gray-200"
                  side="left">
                   <SheetHeader>
-                   <SheetTitle></SheetTitle>
+
+                   <SheetTitle>
+                    <div className="text-3xl flex justify-center item-center 
+                    gap-1">
+                         <Avatar>
+                            <AvatarImage src="https://cdn.pixabay.com/photo/2018/04/28/18/17/bitcoin-3357895_1280.png"/>
+
+                         </Avatar>
+                         <div>
+                              <span className="font-bold text-yellow-500">Zee</span>
+                              <span  className="font-bold text-white">Trade-X</span>
+
+                         </div>
+                      
+
+                    </div>
+
+                   </SheetTitle>
                       
                   </SheetHeader>
+
+                  <Sidebar/>
+                  
                 </SheetContent>
+                
                </Sheet>
 
 
