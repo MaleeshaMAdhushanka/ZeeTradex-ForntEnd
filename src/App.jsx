@@ -1,5 +1,5 @@
 
-import Home from 'public/page/home/Home'
+import Home from '../public/page/home/Home'
 import Navbar from '../public/page/navbar/Navbar'
 
 function App() {
