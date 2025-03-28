@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
-
+import AssetTable from "./AssetsTable";
+import StockChart from "../home/StockChart";
 const Home =() => {
     const [category, setCategory] = React.useState("all")
     //handle category
@@ -27,6 +28,12 @@ const Home =() => {
 
 
                     </div>
+                    <AssetTable/>
+
+                </div>
+
+                <div className="hidden lg:block lg:w-p[50%] p-5">
+                    <StockChart/>
 
                 </div>
 
@@ -34,6 +41,6 @@ const Home =() => {
 
 
         </div>
-    )
+    );
 }
 export default Home;
