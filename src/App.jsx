@@ -1,4 +1,5 @@
 
+import Home from 'public/page/home/Home'
 import Navbar from '../public/page/navbar/Navbar'
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
     <>
       <Navbar/>
+      <Home/>
 
      </>
   )

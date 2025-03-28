@@ -8,8 +8,8 @@ import {
      SheetTrigger,
    } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button";
-import { DragHandleHorizontalIcon } from "@radix-ui/react-icons"; // Import the icon from the correct library
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { DragHandleHorizontalIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons"; // Import the icon from the correct library
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Sidebar from "./Sidebar";
 
    
@@ -20,7 +20,7 @@ const Navbar = () => {
           top-0 left-0 right-0 right-0 flex justify-between items-center'>
 
                <div className="flex items-center gap-3">
-               <Sheet>
+                <Sheet>
                  <SheetTrigger >
                     <Button variant="ghost"
                       size="icon" 
@@ -58,13 +58,31 @@ const Navbar = () => {
                   
                 </SheetContent>
                 
-               </Sheet>
+                </Sheet>
+                 <p className="text-lg lg:text-base cursor-pointer">
+                    ZeeTrade-X
+                 </p>
+                 <div className="p-0 ml-15">
+                    <Button variant="outline" className="flex items-center gap-5">
+                         <MagnifyingGlassIcon/>
+                         <span>Search</span>
+                    </Button>
+
+                 </div>
 
 
                </div>
+               <div>
+                    <Avatar>
+                         <AvatarFallback>
+                              MA
+                         </AvatarFallback>
+
+                    </Avatar>
+               </div>
 
           </div>
-     )
-}
+     );
+};
 
 export default Navbar
