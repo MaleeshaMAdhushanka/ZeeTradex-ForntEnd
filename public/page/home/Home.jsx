@@ -4,14 +4,34 @@ import AssetTable from "./AssetsTable";
 import StockChart from "../home/StockChart";
 import { Avatar } from "@radix-ui/react-avatar";
 import { AvatarImage } from "@/components/ui/avatar";
-import { DotIcon } from "@radix-ui/react-icons";
+import { Cross1Icon, DotIcon } from "@radix-ui/react-icons";
 import { MessageCircle } from "lucide-react";
+import { Input } from "@/components/ui/input";
+
 const Home =() => {
     const [category, setCategory] = React.useState("all")
+    const [inputValue, setInputValue] = React.useState("");
+    //by deafult realase
+    const [isBotRealeace, setIsBotRealeace] = React.useState(false)
+
+    const handleBotRealeace = () => setIsBotRealeace(!isBotRealeace)
+
     //handle category
     const handleCategory = (value) => {
         setCategory(value)
+    };
+
+    const handleChange = (e) => {
+        setInputValue(e.target.value);
+
     }
+    const handeleKeyPress=(event) => {
+         if(event.key == "Enter"){
+            console.log(inputValue)
+         }
+         setInputValue("")
+    }
+
     return(
         <div className='relative'>
 
@@ -77,8 +97,80 @@ const Home =() => {
             <section className="absolute bottom-5 right-5 z-40 flex flex-col justify-end items-end gap-2">
 
 
+            { isBotRealeace && <div className="rounded-md w-[20rem] md:w-[25rem] lg:w-[25rem] h-[70vh]
+              bg-slate-300">
+                <div className="flex justify-between items-center border-b px-6 h-
+                [12%]">
+                  <p>Chat Bot</p>
+                   <Button onClick={handleBotRealeace} variant="ghost" size="icon">
+                    <Cross1Icon/>
+                   </Button>
+
+                </div>
+
+             {/*  create scroll-container */}
+                <div className="h-[76%] flex flex-col overflow-y-auto gap-5 px-5 py-2 scroll-container">
+
+                    <div className="self-start pb-5 w-auto">
+
+                      <div className="justify-end self-end px-3 py-3 rounded-md bg-slate-800 w-auto">
+                        <p>hi, Maleesha Madushanka</p>
+                        <p>you can ask cypto related any quations</p>
+                        <p>like , Price, Market Cap extra....</p>
+
+                      </div>
+
+                    </div>
+
+                    {
+                        [1, 1, 1, 1].map((item, i) => ( 
+                         <div key={i}
+                         className={`${
+                            i%2==0 ? "self-start":"self-end"
+                            }"pb-5 w-auto"`}
+                         >
+
+                        
+                          {i%2==0 ? <div className="justify-end self-end px-3 py-4 rounded-md bg-slate-800 w-auto">
+                          <p>prompt who are you</p>
+                          
+                          </div>:<div className="justify-end self-end px-3 py-3 rounded-md bg-slate-800 w-auto">
+                          <p>anser hi, Maleesha Madushanka</p>
+                          
+  
+                        </div> }
+
+                        
+  
+                        
+  
+  
+                      </div>
+                      ))
+                    }
+
+
+                </div>
+
+                <div className="h-[12%] border-t">
+                    <Input className="w-full h-full outline-none " 
+                    placeholder="write propmt"
+                    onChange={handleChange}
+                    value={inputValue}
+                    onKeyPress={handeleKeyPress}
+                    />
+              
+
+                </div>
+
+            </div>}
+
+
            <div className="relative w-[10rem] cursor-pointer group">
-                <Button className="w-full h-[3rem] gap-2 items-center">
+                <Button 
+                  onClick={handleBotRealeace}
+                
+                 className="w-full h-[3rem] gap-2 items-center">
                     <MessageCircle 
                     size={30}
                     className="fill-[#1e293b] -rote-90 stroke-none group-hover:fill-[#ffffff]"/>
