@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
+import { Button } from "@/components/ui/button";
 
-const  StockChart = () =>{
-      
+
+const timeseries =[
+    {
+        keyword:"DIGITAL_CURRENCY_DAILY",
+        key: "Time Series(Daily)",
+        lable: "1 Day",
+        value: 1,
+
+    },
+
+    {
+        keyword:"DIGITAL_CURRENCY_WEEKLY",
+        key: "Weekly Time Series",
+        lable: "1 Week",
+        value: 7,
+       
+
+    },
+
+    {
+        keyword:"DIGITAL_CURRENCY_MONTHLY",
+        key: "Monthly Time Series",
+        lable: "1 Month",
+        value: 30,
+
+    },
+
+
+
+];
+
+const  StockChart = () => {
+       const[activeLable, setActiveLable] = useState("1 Day")
+
     const series =[
         {
              data: [ 
@@ -75,6 +108,7 @@ const  StockChart = () =>{
             tickAmount: 6
 
         },
+        colors:["#758AA2"],
         markers:{
             colors:["#fff"],
             strokeColors:["#fff"],
@@ -95,7 +129,7 @@ const  StockChart = () =>{
             type:"gradient",
             gradient:{
                 shadeIntensity:1,
-                opacityFrom:0.8,
+                opacityFrom:0.7,
                 opacityTo:0.9,
                 stops:[0,100],
 
@@ -108,15 +142,55 @@ const  StockChart = () =>{
             show:true
         },
 
+    };
+
+    const handleActiveLable =(value) => {
+
+
+        setActiveLable(value);
+
     }
 
-    return <div style={{ width: "50vw", overflow:"hidden"}}>
-        <div id="chart-timelines" style={{ width: "100%", height: "500px" }}> 
-            <ReactApexChart options={options} series={series} type="area" height={500}/>
+
+    // return <div style={{ width: "50vw", overflow:"hidden"}}>
+    //     <div id="chart-timelines" style={{ width: "100%", height: "500px" }}> 
+    //         <ReactApexChart options={options} series={series} type="area" height={500}/>
+
+    //     </div>
+
+    // </div>;
+
+    return(
+        <div style={{ width: "50vw", overflow:"hidden"}}>
+
+            <div className="space-x-3">
+                {timeseries.map((item)=><Button 
+                variant={activeLable== item.lable ? "" : "outline"}
+                onClick={() =>handleActiveLable(item.lable)} key={item.lable}>
+                    {item.lable}
+
+                </Button>)}
+
+            </div>
+
+            <div id="chart-timelines">
+                <ReactApexChart
+                 options={options}
+                 series={series}
+                 height={500}
+                 type="area"
+                 
+                 
+                 
+                 />
+
+
+            </div>
+
 
         </div>
 
-    </div>;
+    );
     
 };
 
