@@ -161,7 +161,7 @@ const  StockChart = () => {
     // </div>;
 
     return(
-        <div style={{ width: "50vw", overflow:"hidden"}}>
+        <div style={{ width: "47vw", overflow:"hidden"}}>
 
             <div className="space-x-3">
                 {timeseries.map((item)=><Button 
@@ -177,7 +177,7 @@ const  StockChart = () => {
                 <ReactApexChart
                  options={options}
                  series={series}
-                 height={500}
+                 height={450}
                  type="area"
                  
                  
