@@ -51,8 +51,8 @@ const AssetTable = () => {
 
       
 
-    )
+    );
 
-}
+};
 
-export default AssetTable
+export default AssetTable;
