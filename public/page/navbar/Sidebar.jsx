@@ -4,6 +4,7 @@ import { ActivityLogIcon, DashboardIcon, ExitIcon, HomeIcon, PersonIcon } from "
 import { BookMarkedIcon, CreditCardIcon, LandmarkIcon, WalletIcon } from "lucide-react";
 import path from "path";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const menu = [
@@ -28,15 +29,23 @@ const menu = [
 
 ];
 
+//navigate to user diffrent diffent page
 const Sidebar = () => {
+    const navigate = useNavigate();
+
+    // const hanldeNavigate =(value) =>
+
     return(
         <div className="mt-10 space-y-4">
             {menu.map((item)=> (
                 <div key={item.name}>
                   <SheetClose className="w-full">
 
-                   <Button variant="primary" 
-                     className="flex items-center gap-4 py-6 px-10 w-full h-7 text-lg bg-black hover:bg-gray-700 ">
+                   <Button 
+                    variant="primary" 
+                     className="flex items-center gap-4 py-6 px-10 w-full h-7 text-lg bg-black hover:bg-gray-700"
+                     onClick={() => navigate(item.path)}
+                     >
 
                      <span className="w-8">{item.icon}</span>
                      <p className="text-blue-600">{item.name}</p>
