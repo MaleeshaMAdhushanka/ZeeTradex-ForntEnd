@@ -32,7 +32,7 @@ const Portfolio = () => {
                    </TableRow>
               </TableHeader>
             <TableBody>
-                {[1,1,1,1,1,1,1,1,1,1,1].map((item,index) => <TableRow key={index}>
+                {[1,1,1,1,1,1,1,1,1,1,1].map((item,index) =>( <TableRow key={index}>
                    <TableCell className="font-medium flex items-center gap-2">
                       <Avatar className="-z-50">
 
@@ -47,7 +47,8 @@ const Portfolio = () => {
                    <TableCell>32652127595</TableCell>
                    <TableCell>1660363443420</TableCell>                
                   <TableCell className="text-right">$83686</TableCell>
-              </TableRow>)}
+              </TableRow>
+              ))}
               
             </TableBody> 
      </Table>
