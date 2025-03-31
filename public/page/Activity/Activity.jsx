@@ -2,8 +2,7 @@ import React from "react";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Avatar } from "@/components/ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
-import { Button } from "@/components/ui/button";
-import { BookmarkFilledIcon } from "@radix-ui/react-icons";
+
 
 
 const Activity = () => {
