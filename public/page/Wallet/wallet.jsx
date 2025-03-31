@@ -1,8 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { ReloadIcon } from "@radix-ui/react-icons";
+import { ReloadIcon, ShuffleIcon } from "@radix-ui/react-icons";
 import { CopyIcon, DollarSign, UploadIcon, WalletIcon } from "lucide-react";
 import React from "react";
+import TopupForm from "./TopupForm";
+import WithdrawalForm from "./WithdrawForm";
+import TransferForm from "./TransferForm";
 
 export const Wallet = () => {
     return(
@@ -71,10 +74,68 @@ export const Wallet = () => {
 
                                     </DialogHeader>
 
+                                 <TopupForm/>
 
                                 </DialogContent>
 
                             </Dialog>
+                            <Dialog>
+                                <DialogTrigger>
+                                    <div className="h-24 w-24 hover:text-blue-400 cursor-pointer
+                                    flex flex-col items-center justify-center rounded-md
+                                     shadow-sky-800 shadow-md">
+
+                                        <UploadIcon/>
+                                        <span className="text-sm mt-2">Withdrawal</span>
+
+                                    </div>
+
+                                </DialogTrigger>
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle>
+
+                                            Request Withdrawal
+
+                                        </DialogTitle>
+
+
+                                    </DialogHeader>
+
+                                 <WithdrawalForm/>
+
+                                </DialogContent>
+
+                            </Dialog>
+                            <Dialog>
+                                <DialogTrigger>
+                                    <div className="h-24 w-24 hover:text-blue-400 cursor-pointer
+                                    flex flex-col items-center justify-center rounded-md
+                                     shadow-sky-800 shadow-md">
+
+                                        <ShuffleIcon/>
+                                        <span className="text-sm mt-2">Transfer</span>
+
+                                    </div>
+
+                                </DialogTrigger>
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle className="text-center text-xl">
+
+                                            Transfer to other wallet
+
+                                        </DialogTitle>
+
+
+                                    </DialogHeader>
+
+                                 <TransferForm/>
+
+                                </DialogContent>
+
+                            </Dialog>
+
 
 
                         </div>
