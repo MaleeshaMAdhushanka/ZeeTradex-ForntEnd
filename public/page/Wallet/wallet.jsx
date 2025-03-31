@@ -4,7 +4,7 @@ import { ReloadIcon, ShuffleIcon } from "@radix-ui/react-icons";
 import { CopyIcon, DollarSign, UploadIcon, WalletIcon } from "lucide-react";
 import React from "react";
 import TopupForm from "./TopupForm";
-import WithdrawalForm from "./WithdrawForm";
+import WithdrawalForm from "./WithdrawalForm";
 import TransferForm from "./TransferForm";
 
 export const Wallet = () => {

@@ -36,7 +36,7 @@ const Sidebar = () => {
     // const hanldeNavigate =(value) =>
 
     return(
-        <div className="mt-10 space-y-4">
+        <div className="mt-1 space-y-4">
             {menu.map((item)=> (
                 <div key={item.name}>
                   <SheetClose className="w-full">

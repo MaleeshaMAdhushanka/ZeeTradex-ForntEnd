@@ -18,7 +18,6 @@ const Navbar = () => {
      return(
           <div className='px-2 py-3 border-b z-50 bg-background  text-black bg opacity-100 sticky 
           top-0 left-0 right-0 right-0 flex justify-between items-center'>
-
                <div className="flex items-center gap-3">
                 <Sheet>
                  <SheetTrigger >
@@ -27,6 +26,7 @@ const Navbar = () => {
                       className="rounded-full h-11 w-11">
                          <DragHandleHorizontalIcon className='h-20 w-10'/>
                     </Button>
+                     
                  </SheetTrigger>
 
                 <SheetContent  className="w-72 border-r-0 flex flex-col justify-center  bg-gray-900 text-gray-200"
@@ -36,7 +36,7 @@ const Navbar = () => {
 
                    <SheetTitle>
                     <div className="text-3xl flex justify-center item-center 
-                    gap-1">
+                    gap-2">
                          <Avatar>
                             <AvatarImage src="https://cdn.pixabay.com/photo/2018/04/28/18/17/bitcoin-3357895_1280.png"/>
 
@@ -85,4 +85,4 @@ const Navbar = () => {
      );
 };
 
-export default Navbar
+export default Navbar;
