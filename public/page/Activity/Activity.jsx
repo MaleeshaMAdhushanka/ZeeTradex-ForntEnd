@@ -17,7 +17,7 @@ const Activity = () => {
                       Date & Time
                    </TableHead>
                     <TableHead  className="bg-gray-800 text-white">
-                      Treding Pair
+                      Trending Pair
                     </TableHead >
                     <TableHead  className="bg-gray-800 text-white">
                       Buy Price
