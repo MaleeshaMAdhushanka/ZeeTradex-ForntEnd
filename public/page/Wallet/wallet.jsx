@@ -1,11 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { ReloadIcon, ShuffleIcon } from "@radix-ui/react-icons";
+import { ReloadIcon, ShuffleIcon, UpdateIcon } from "@radix-ui/react-icons";
 import { CopyIcon, DollarSign, UploadIcon, WalletIcon } from "lucide-react";
 import React from "react";
 import TopupForm from "./TopupForm";
 import WithdrawalForm from "./WithdrawalForm";
 import TransferForm from "./TransferForm";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export const Wallet = () => {
     return(
@@ -145,8 +146,54 @@ export const Wallet = () => {
                     </CardContent>
 
                 </Card>
+                <div className="py-5 pt-10">
+                    <div className="flex gap-2 items-center pb-5">
+                        <h1 className="text-2xl font-semibold">History</h1>
+                        <UpdateIcon className="h-9 w-7 p-0 cursor-pointer hover:text-green-400"/>
+
+                    </div>
+                    
+                    <div className="space-y-5">
+                      {/* dummy array */}
+                        {[1, 1, 1, 1, 1, 1, 1].map((item, i)=>(<div key={i}>
+                           <Card className=" px-5 justify-between items-center p-2">
+
+                            <div className="flex items-center gap-60">
+                                <Avatar>
+                                    <AvatarFallback>
+                                        <ShuffleIcon className=""/>
+
+                                    </AvatarFallback>
+
+                                </Avatar>
+
+                                <div className="space-y-1">
+                                    <h1>Buy Asset</h1>
+                                    <p className="text-sm text-gray-500">2025-04-04</p>
+
+                                </div>
+
+                                <div>
+                                    <p className={`text-green-500`}>999 USD</p>
+                                </div>
+
+                            </div>
+
+                           </Card>
+                        </div>
+
+                        ))}
+
+                        
+
+
+                    </div>
+
+
+
+                </div>
 
             </div>
         </div>
-    )
-}
+    );
+};
