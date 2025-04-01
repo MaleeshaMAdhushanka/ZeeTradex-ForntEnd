@@ -8,6 +8,7 @@ import {
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
+import PaymentDetailsForm from "./PaymementDetailsForm";
   
 
 const PaymentDetails = () => {
@@ -52,7 +53,7 @@ const PaymentDetails = () => {
               <DialogTitle>Payment Details?</DialogTitle>
     
             </DialogHeader>
-            
+            <PaymentDetailsForm/>
        </DialogContent>
      </Dialog>
 
