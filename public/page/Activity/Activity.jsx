@@ -8,30 +8,30 @@ import { AvatarImage } from "@radix-ui/react-avatar";
 const Activity = () => {
     return (
         <div className="p-5 lg:px-10 bg-dark-500  font-bold">
-        <h1 className="font-bold text-3xl pb-5">Activity</h1>
+         <h1 className="font-bold text-3xl pb-5">Activity</h1>
 
          <Table className="border">
             <TableHeader>
                 <TableRow>
-                   <TableHead className="py-5">
+                   <TableHead className="py-5 bg-gray-800 text-white">
                       Date & Time
                    </TableHead>
-                    <TableHead>
+                    <TableHead  className="bg-gray-800 text-white">
                       Treding Pair
-                    </TableHead>
-                    <TableHead>
+                    </TableHead >
+                    <TableHead  className="bg-gray-800 text-white">
                       Buy Price
                     </TableHead>
-                    <TableHead>
+                    <TableHead  className="bg-gray-800 text-white">
                       Selling Price
                     </TableHead>
-                    <TableHead>
+                    <TableHead  className="bg-gray-800 text-white">
                      Order Type
                     </TableHead>
-                   <TableHead>
+                   <TableHead  className="bg-gray-800 text-white">
                       Profite/Loss
                   </TableHead>
-                  <TableHead className="text-right">Value</TableHead>
+                  <TableHead className="text-right bg-gray-800 text-white">Value</TableHead>
 
                 </TableRow>
             </TableHeader>

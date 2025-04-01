@@ -7,23 +7,23 @@ const AssetTable = () => {
     return(
     <Table>
                    <TableHeader>
-                       <TableRow>
-                          <TableHead className="w-[100px]">
+                       <TableRow >
+                          <TableHead className="w-[100px] bg-gray-800 text-white">
                             Coin
                           </TableHead>
-                          <TableHead>
+                          <TableHead className="bg-gray-800 text-white">
                             SYMBOL
                           </TableHead>
-                          <TableHead>
+                          <TableHead  className="bg-gray-800 text-white">
                             VOLUME
                           </TableHead>
-                          <TableHead>
+                          <TableHead  className="bg-gray-800 text-white">
                             MARKET CAP
                           </TableHead>
-                          <TableHead>
+                          <TableHead className= "bg-gray-800 text-white">
                             24h
                           </TableHead>
-                         <TableHead className="text-right">PRICE</TableHead>
+                         <TableHead className="text-right bg-gray-800 text-white">PRICE</TableHead>
                        </TableRow>
                   </TableHeader>
                 <TableBody>
