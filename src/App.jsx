@@ -12,12 +12,15 @@ import Watchlist from '../public/page/Watchlist/Watchlist'
 import Profile from '../public/page/Profile/Profile'
 import SearchCoin from '../public/page/Search/SearchCoin'
 import Notfound from '../public/page/Notfound/Notfound'
+import Auth from '../public/page/Auth/Auth'
 
 function App() {
 
   return (
     <>
-      <Navbar/>
+    <Auth/>
+   {false && <div>
+    <Navbar/>
       {/* define the alll route */}
       <Routes>
         <Route path="/" element={<Home />} />  
@@ -34,6 +37,9 @@ function App() {
 
       </Routes>
 
+
+    </div>
+      }
      </>
   )
 }
