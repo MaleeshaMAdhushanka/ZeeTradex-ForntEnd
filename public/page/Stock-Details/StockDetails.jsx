@@ -1,6 +1,17 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { BookmarkFilledIcon, BookmarkIcon, DotIcon } from "@radix-ui/react-icons";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
+import TreadingForm from "./TreadingForm";
+import StockChart from "../home/StockChart";
+  
 
 
 //click the any asset redirect to the stock details page
@@ -41,15 +52,34 @@ const StockDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="flex items-center gap-4">
                     <Button>
                         {true ? (<BookmarkFilledIcon className="h-6 w-6"/>) : (<BookmarkIcon className="h-6 w-6"/> )}
                     </Button>
+                    <Dialog>
+  <DialogTrigger>
+    <Button  size ="lg"className="">
+        Tread
+    </Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>How Much Do you want to spend?</DialogTitle>
+      
+    </DialogHeader>
+    <TreadingForm/>
+  </DialogContent>
+</Dialog>
+
                 </div>
 
             </div>
+            <div className=" flex justify-center mt-14">
+            <StockChart/>
+            </div>
+            
         </div>
-    )
-}
+    );
+};
 
 export default StockDetails;
