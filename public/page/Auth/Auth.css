@@ -1,5 +1,5 @@
 .authContainer {
-    background-image: url(/src/assets/TradeB.jpeg); /* Added !important */
+    background-image: url(/src/assets/TradeA.jpg); /* Added !important */
     height: 100vh;
     width: 100%;
     background-size: cover ; /* Ensures the image covers the container */
