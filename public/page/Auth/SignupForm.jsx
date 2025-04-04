@@ -28,6 +28,7 @@ const SignupForm = () => {
 
     return (
         <div className="px-10 py-2">
+            <h1 className="text-xl font-bold text-center pb-3">Create New Account</h1>
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
@@ -60,7 +61,7 @@ const SignupForm = () => {
                                 <FormControl>
                                     <Input
                                         className="border w-full border-gray-700 p-5"
-                                        placeholder="Email"
+                                        placeholder=".....@gmail.com"
                                         {...field}
                                     />
                                 </FormControl>
@@ -90,10 +91,9 @@ const SignupForm = () => {
                    
                
                {/* click karama close wenna */}
-                       <Button type="submit" className="w-full py-5">
+                       <Button type="submit" className="w-full py-5
+                       border-2 border-gray-400 text-yellow-300 px-5 py-5 rounded-md transition-all duration-300 ease-in-out hover:bg-green-500 hover:text-white hover:border-gray-800">
                         Submit
-
-
                        </Button>
 
                                     
