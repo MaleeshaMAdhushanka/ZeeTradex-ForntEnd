@@ -11,12 +11,12 @@ import { GET_USER_FAILURE, GET_USER_REQUEST, GET_USER_SUCCESS, LOGIN_FAILURE, LO
 //send action to the store using dispatch
 export const register =(userData) => async(dispatch) =>{
 
-    dispatch({type:REGISTER_REQUEST})
+    dispatch({type:REGISTER_REQUEST});
     
-    const baseUrl = "http://localhost:8080/"
+    const baseUrl = "http://localhost:8080";
 
     try {
-      const response = await axios.post(`${baseUrl}/auth/signup`, userData);
+      const response = await axios.post(`${baseUrl}/signup`, userData);
       const user = response.data;
       console.log(user);
 

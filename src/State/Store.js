@@ -2,6 +2,7 @@
 // Redux is a JavaScript library used for managing the state of applications, particularly those with complex UI and data sharing needs, by providing a predictable and maintainable way to handle global state. 
 
 import { thunk } from "redux-thunk";
+import authReducer from "./Auth/Reducer";
 
 //redux 6 step
 /*
@@ -13,10 +14,12 @@ import { thunk } from "redux-thunk";
 6 Middleware- Handle asynchronous actions
 */
 
-const{combineReducers,legacy_createStore, applyMiddleware} = require("redux");
+
+import {combineReducers,legacy_createStore, applyMiddleware} from "redux";
 
 const rootReducer = combineReducers({
-
+    auth:authReducer
+    //auth reducer available in our state 
 });
 
 //create our store

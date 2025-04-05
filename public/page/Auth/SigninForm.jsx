@@ -10,10 +10,14 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { login } from "@/State/Auth/Action";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 const SigninForm = () => {
+    const dispatch = useDispatch()
     const form = useForm({
+        resolver:"",
         defaultValues: {
             email: "",
             password: "",
@@ -22,6 +26,7 @@ const SigninForm = () => {
     });
 
     const onSubmit = (data) => {
+        dispatch(login(data))
         console.log(data);
     };
 
