@@ -16,30 +16,31 @@ export const register =(userData) => async(dispatch) =>{
     const baseUrl = "http://localhost:8080";
 
     try {
-      const response = await axios.post(`${baseUrl}/signup`, userData);
+      const response = await axios.post(`${baseUrl}/auth/signup`, userData);
       const user = response.data;
       console.log(user);
 
       //register sucess-since we have data
 
-      dispatch({type:REGISTER_SUCCESS, payload:user.jwt})
+      dispatch({type:REGISTER_SUCCESS, payload:user.jwt});
+      localStorage.setItem("jwt", user.jwt)
 
 
     } catch (error) {
-        dispatch({type:REGISTER_FAILURE, payload:error.response.data.message})
+        dispatch({type:REGISTER_FAILURE, payload:error.response.data.message});
         console.error(error);
     }
 
 
 
-}
+};
 //login method
 
 export const login =(userData) => async(dispatch) =>{
 
     dispatch({type:LOGIN_REQUEST})
     
-    const baseUrl = "http://localhost:8080/"
+    const baseUrl = "http://localhost:8080"
 
     try {
       const response = await axios.post(`${baseUrl}/auth/signin`, userData);
@@ -48,7 +49,9 @@ export const login =(userData) => async(dispatch) =>{
 
       //register sucess-since we have data
 
-      dispatch({type:LOGIN_SUCCESS, payload:user.jwt})
+      dispatch({type:LOGIN_SUCCESS, payload:user.jwt});
+      localStorage.setItem("jwt", user.jwt)
+
 
 
     } catch (error) {
@@ -58,7 +61,7 @@ export const login =(userData) => async(dispatch) =>{
 
 
 
-}
+};
 
 //get user data
 
@@ -66,10 +69,10 @@ export const getUser =(jwt) => async(dispatch) =>{
 
     dispatch({type:GET_USER_REQUEST})
     
-    const baseUrl = "http://localhost:8080/"
+    const baseUrl = "http://localhost:8080"
 
     try {
-      const response = await axios.get(`${baseUrl}/api/auth/users/profile`,{
+      const response = await axios.get(`${baseUrl}/api/users/profile`,{
         headers:{
             Authorization:`Bearer ${jwt}`
         }
@@ -89,6 +92,8 @@ export const getUser =(jwt) => async(dispatch) =>{
 
 
 
-}
+};
+
+
 
 

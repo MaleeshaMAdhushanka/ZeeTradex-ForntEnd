@@ -13,13 +13,28 @@ import Profile from '../public/page/Profile/Profile'
 import SearchCoin from '../public/page/Search/SearchCoin'
 import Notfound from '../public/page/Notfound/Notfound'
 import Auth from '../public/page/Auth/Auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { store } from './State/Store'
+import { useEffect } from 'react'
+import { getUser } from './State/Auth/Action'
 
 function App() {
+  //get user action
+  const {auth} = useSelector((store)=>store);
+
+  const dispatch = useDispatch();
+
+  console.log(" auth -----", auth);
+
+  //if auth.jwt is null get the jwt form local storage
+  //but not null use this jwt token
+  useEffect(() => {
+    dispatch(getUser( auth.jwt ||localStorage.getItem("jwt")))
+  }, [auth.jwt]);
 
   return (
     <>
-    <Auth/>
-   {false && <div>
+   {auth.user ?<div>
     <Navbar/>
       {/* define the alll route */}
       <Routes>
@@ -38,8 +53,7 @@ function App() {
       </Routes>
 
 
-    </div>
-      }
+    </div> :<Auth/>}
      </>
   )
 }

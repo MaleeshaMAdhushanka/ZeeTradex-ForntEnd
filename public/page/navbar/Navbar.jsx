@@ -16,11 +16,11 @@ import Sidebar from "./Sidebar";
 
 const Navbar = () => {
      return(
-          <div className='px-2 py-3 border-b z-50 bg-background  text-black bg opacity-100 sticky 
+          <div className='px-2 py-3 border-b z-50 bg-black  text-yellow-400 bg opacity-100 sticky 
           top-0 left-0 right-0 right-0 flex justify-between items-center'>
                <div className="flex items-center gap-3">
                 <Sheet>
-                 <SheetTrigger >
+                 <SheetTrigger asChild>
                     <Button variant="ghost"
                       size="icon" 
                       className="rounded-full h-11 w-11">
