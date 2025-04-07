@@ -20,8 +20,7 @@ import { getUser } from './State/Auth/Action'
 
 function App() {
   //get user action
-  const {auth} = useSelector((store)=>store);
-
+  const { auth } = useSelector((store) => store);
   const dispatch = useDispatch();
 
   console.log(" auth -----", auth);
@@ -34,7 +33,7 @@ function App() {
 
   return (
     <>
-   {auth.user ?<div>
+   {auth.user?<div>
     <Navbar/>
       {/* define the alll route */}
       <Routes>

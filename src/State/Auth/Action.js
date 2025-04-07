@@ -25,6 +25,8 @@ export const register =(userData) => async(dispatch) =>{
       dispatch({type:REGISTER_SUCCESS, payload:user.jwt});
       localStorage.setItem("jwt", user.jwt)
 
+      // userData.navigate("")
+
 
     } catch (error) {
         dispatch({type:REGISTER_FAILURE, payload:error.response.data.message});
