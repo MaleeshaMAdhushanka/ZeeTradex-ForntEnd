@@ -33,7 +33,7 @@ function App() {
 
   return (
     <>
-   {auth.user?<div>
+   {auth.user? <div>
     <Navbar/>
       {/* define the alll route */}
       <Routes>
