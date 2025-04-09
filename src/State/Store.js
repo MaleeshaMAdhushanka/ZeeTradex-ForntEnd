@@ -16,10 +16,12 @@ import authReducer from "./Auth/Reducer";
 
 
 import {combineReducers,legacy_createStore, applyMiddleware} from "redux";
+import coinReducer from "./Coin/Reducer";
 
 const rootReducer = combineReducers({
-    auth:authReducer
+    auth:authReducer,
     //auth reducer available in our state 
+    coin:coinReducer
 });
 
 //create our store

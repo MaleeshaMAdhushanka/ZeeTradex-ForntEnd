@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import React from "react";
+import React, { useEffect } from "react";
 import AssetTable from "./AssetsTable";
 import StockChart from "../home/StockChart";
 import { Avatar } from "@radix-ui/react-avatar";
@@ -7,14 +7,20 @@ import { AvatarImage } from "@/components/ui/avatar";
 import { Cross1Icon, DotIcon } from "@radix-ui/react-icons";
 import { MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { useDispatch, useSelector } from "react-redux";
+import { getCoinList } from "@/State/Coin/Action";
 
 const Home =() => {
     const [category, setCategory] = React.useState("all")
     const [inputValue, setInputValue] = React.useState("");
     //by deafult realase
-    const [isBotRealeace, setIsBotRealeace] = React.useState(false)
+    const [isBotRealeace, setIsBotRealeace] = React.useState(false);
 
-    const handleBotRealeace = () => setIsBotRealeace(!isBotRealeace)
+    const {coin} = useSelector(store=> store);
+
+    const dispatch = useDispatch()
+
+    const handleBotRealeace = () => setIsBotRealeace(!isBotRealeace);
 
     //handle category
     const handleCategory = (value) => {
@@ -24,14 +30,19 @@ const Home =() => {
     const handleChange = (e) => {
         setInputValue(e.target.value);
 
-    }
+    };
     const handeleKeyPress=(event) => {
          if(event.key == "Enter"){
             console.log(inputValue)
          }
          setInputValue("")
-    }
+    };
 
+
+   useEffect(()=> {
+     dispatch(getCoinList(1))
+    
+   }, [])
     return(
         <div className='relative'>
 
@@ -52,7 +63,7 @@ const Home =() => {
 
 
                     </div>
-                    <AssetTable/>
+                    <AssetTable coin={coin.coinList} category={category}/>
 
                 </div>
                 <div className="hidden lg:block lg:w-[50%] p-5">
