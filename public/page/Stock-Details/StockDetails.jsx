@@ -11,11 +11,29 @@ import {
   } from "@/components/ui/dialog"
 import TreadingForm from "./TreadingForm";
 import StockChart from "../home/StockChart";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { fetchCoinDetails } from "@/State/Coin/Action";
   
 
 
 //click the any asset redirect to the stock details page
 const StockDetails = () => {
+
+const {coin} = useSelector(store => store)
+
+    //bitcoin click enne ekata adala stock details page eka
+const dispatch = useDispatch()
+
+const {id} = useParams()
+
+
+useEffect(()=> {
+    dispatch(fetchCoinDetails({coinId: id, jwt: localStorage.getItem("jwt")}))
+
+},[id])
+
     return (
         <div className="p-5 mt-5">
             <div className="flex justify-between">
@@ -24,7 +42,7 @@ const StockDetails = () => {
                         <Avatar>
                             <AvatarImage
                             src={
-                                "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"
+                                coin.coinDetails?.image.large
 
 
                             }
