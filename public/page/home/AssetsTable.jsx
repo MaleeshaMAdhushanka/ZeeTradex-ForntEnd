@@ -4,6 +4,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const AssetTable = ({coin, category}) => {
 
@@ -17,49 +18,54 @@ const AssetTable = ({coin, category}) => {
 
   
     return(
-    <Table>
-                   <TableHeader>
-                       <TableRow >
-                          <TableHead className="w-[100px] bg-gray-800 text-white">
+        <Table>
+              <ScrollArea className={`${category=="all"?"h-[74vh]":"h-[82vh]"}`}>
+                  <TableHeader className="bg-yellow-300 text-black">
+                        <TableRow>
+                          <TableHead className="w-[100px]">
                             Coin
                           </TableHead>
-                          <TableHead className="bg-gray-800 text-white">
+                          <TableHead>
                             SYMBOL
                           </TableHead>
-                          <TableHead  className="bg-gray-800 text-white">
+                          <TableHead>
                             VOLUME
                           </TableHead>
-                          <TableHead  className="bg-gray-800 text-white">
+                          <TableHead >
                             MARKET CAP
                           </TableHead>
-                          <TableHead className= "bg-gray-800 text-white">
+                          <TableHead >
                             24h
                           </TableHead>
-                         <TableHead className="text-right bg-gray-800 text-white">PRICE</TableHead>
-                       </TableRow>
+                          <TableHead className="text-right">PRICE</TableHead>
+                        </TableRow>
                   </TableHeader>
-                <TableBody>
-                    {coin.map((item,index) => <TableRow key={item.id}>
-                       <TableCell onClick={() => navigate(`/market/${item.id}`)} className="font-medium flex items-center gap-2">
-                          <Avatar className="-z-50">
-    
-                            <AvatarImage src={item.image}/>
-                               
-                          </Avatar>
-                          <span>{item.name}</span>
-                            
-            
-                        </TableCell>
-                       <TableCell>{item.symbol}</TableCell>
-                       <TableCell>{item.total_volume}</TableCell>
-                       <TableCell>{item.market_cap}</TableCell>
-                       <TableCell>{item.price_change_percentage_24h}</TableCell>
-    
-                      <TableCell className="text-right">${item.current_price}</TableCell>
-                  </TableRow>
-                  )}
-                  
-                </TableBody> 
+                  <TableBody>
+                      {coin.map((item,index) => <TableRow key={item.id}>
+                          <TableCell  
+                          onClick={() => navigate(`/market/${item.id}`)} className="font-medium flex items-center gap-2 text-orange-500">
+                            <Avatar className="-z-50">
+
+                              <AvatarImage src={item.image}/>
+                                  
+                            </Avatar>
+                            <span>{item.name}</span>
+                              
+              
+                          </TableCell>
+                          <TableCell className="text-green-400">{item.symbol}</TableCell>
+                          <TableCell className=" text-yellow-300">{item.total_volume}</TableCell>
+                          <TableCell className=" text-yellow-300">{item.market_cap}</TableCell>
+                          <TableCell className=" text-yellow-300">{item.price_change_percentage_24h}</TableCell>
+
+                        <TableCell className="text-right text-yellow-300">${item.current_price}</TableCell>
+                    </TableRow>
+                    )}
+                    
+                  </TableBody> 
+                
+              </ScrollArea>
+                
          </Table>
 
       
