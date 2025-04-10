@@ -21,18 +21,18 @@ import { fetchCoinDetails } from "@/State/Coin/Action";
 //click the any asset redirect to the stock details page
 const StockDetails = () => {
 
-const {coin} = useSelector(store => store)
+const { coin } = useSelector(store => store);
 
     //bitcoin click enne ekata adala stock details page eka
-const dispatch = useDispatch()
+const dispatch = useDispatch();
 
-const {id} = useParams()
+const { id } = useParams();
 
 
 useEffect(()=> {
     dispatch(fetchCoinDetails({coinId: id, jwt: localStorage.getItem("jwt")}))
 
-},[id])
+},[id]);
 
     return (
         <div className="p-5 mt-5">
@@ -52,7 +52,7 @@ useEffect(()=> {
                     </div>
                     <div>
                         <div className="flex items-center gap-2">
-                            <p>BTC</p>
+                            <p>{coin.coinDetails?.symbol.toUpperCase()}</p>
                             <DotIcon className="text-gray-400"/>
                             <p className="text-gray-400">{coin.coinDetails?.name}</p>
 
@@ -96,7 +96,7 @@ useEffect(()=> {
 
             </div>
             <div className=" flex justify-center mt-14">
-            <StockChart/>
+            <StockChart coinId={id}/>
             </div>
             
         </div>

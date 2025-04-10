@@ -3,7 +3,7 @@ import { FETCH_COIN_BY_ID_REQUEST, FETCH_COIN_BY_ID_SUCCESS, FETCH_COIN_DETAILS_
 import axios from "axios";
 
 //mulima acces kara page parameter eka
-export const getCoinList =(page) => async(dispatch) =>{
+export const getCoinList = (page) => async(dispatch) => {
 
     dispatch({type:FETCH_COIN_LIST_REQUEST});
     
@@ -19,8 +19,20 @@ export const getCoinList =(page) => async(dispatch) =>{
 
 
     } catch (error) {
-        dispatch({type:FETCH_COIN_LIST_FAILURE, payload:error.message});
-        console.error(error);
+        if (error.response && error.response.status === 429) {
+            console.error("Rate limit exceeded. Please try again later.");
+            dispatch({type:FETCH_COIN_LIST_FAILURE, payload:"Rate limit exceeded. Please try again later."});
+
+            setTimeout(() => {
+                dispatch(getCoinList(page));
+            }, 60000);
+
+        } else{
+            console.error("Error fetching coin list :",error);
+            dispatch({type:FETCH_COIN_LIST_FAILURE, payload:error.message});
+
+
+        }
     }
 
 
@@ -38,8 +50,19 @@ export const getTop50CoinList = () => async(dispatch) => {
         console.log("top 50 coins", response.data);
 
     } catch (error) {
-         console.log("error", error);
-         dispatch({type: FETCH_TOP_50_COINS_FAILURE, payload: error.message});
+        if (error.response && error.response.status === 429) {
+            console.error("Rate limit exceeded. Please try again later.");
+            dispatch({type: FETCH_TOP_50_COINS_FAILURE, payload: "Rate limit exceeded. Please try again later."});
+
+// give delat
+            setTimeout(() => {
+               dispatch(getTop50CoinList());
+            }, 60000); //1 minute delay
+        } else{
+            console.log("Error fetching top 50 coins", error);
+            dispatch({type: FETCH_TOP_50_COINS_FAILURE, payload: error.message});
+
+        }
 
     }
 
@@ -50,7 +73,7 @@ export const fetchMarketChart = ({coinId, days, jwt}) => async (dispatch) => {
     dispatch({type:FETCH_MARKET_CHART_REQUEST});
 
     try {
-        const response = await api.get(`/coins/${coinId}chart?days=${days}`,{
+        const response = await api.get(`/coins/${coinId}/chart?days=${days}`,{
             headers: {
                 Authorization: `Bearer ${jwt}`
             }
