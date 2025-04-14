@@ -17,11 +17,13 @@ import authReducer from "./Auth/Reducer";
 
 import {combineReducers,legacy_createStore, applyMiddleware} from "redux";
 import coinReducer from "./Coin/Reducer";
+import walletReducer from "./Wallet/Reducer";
 
 const rootReducer = combineReducers({
     auth:authReducer,
     //auth reducer available in our state 
-    coin:coinReducer
+    coin:coinReducer,
+    wallet: walletReducer
 });
 
 //create our store

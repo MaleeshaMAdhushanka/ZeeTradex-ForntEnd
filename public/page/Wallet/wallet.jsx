@@ -2,13 +2,26 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ReloadIcon, ShuffleIcon, UpdateIcon } from "@radix-ui/react-icons";
 import { CopyIcon, DollarSign, UploadIcon, WalletIcon } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
 import TopupForm from "./TopupForm";
 import WithdrawalForm from "./WithdrawalForm";
 import TransferForm from "./TransferForm";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserWallet } from "@/State/Wallet/Action";
 
 export const Wallet = () => {
+ const  dispatch = useDispatch();
+ const {wallet} = useSelector(store => store)
+
+ //invorking get user wallet
+ useEffect(() => {
+  handleFetchUserWallet();
+ },[])
+ 
+ const handleFetchUserWallet = () => {
+    dispatch(getUserWallet(localStorage.getItem("jwt")))
+ }
     return(
         <div className="flex flex-col items-center">
 
@@ -35,7 +48,7 @@ export const Wallet = () => {
                         </div>
 
                         <div>
-                            <ReloadIcon className="w-6 h-5 cursor-pointer hover:text-blue-400"/>
+                            <ReloadIcon onClick={handleFetchUserWallet} className="w-6 h-5 cursor-pointer hover:text-blue-400"/>
 
                         </div>
                         
@@ -46,7 +59,7 @@ export const Wallet = () => {
                         <div className="flex items-center">
                             <DollarSign/>
                             <span className="text-2xl font-semibold">
-                                2000.53
+                                {wallet.userWallet.balance}
                             </span>
 
                         </div>
