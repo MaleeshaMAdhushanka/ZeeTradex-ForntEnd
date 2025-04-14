@@ -137,8 +137,8 @@ const  StockChart = ({coinId}) => {
             <div className="space-x-3">
                 {timeseries.map((item)=> (
                     <Button 
-                   variant={activeLabel== item.label ? "" : "outline"}
-                   onClick={() =>handleActiveLabel(item.label)} 
+                   variant={activeLabel.label== item.label ? "" : "outline"}
+                   onClick={() =>handleActiveLabel(item)} 
                    key={item.label}
                 >
                     {item.label}

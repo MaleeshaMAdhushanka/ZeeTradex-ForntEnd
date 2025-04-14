@@ -17,7 +17,7 @@ const AssetTable = ({coin, category}) => {
   
 
     return(
-      <ScrollArea className={`${category=="all"?"h-[74vh]":"h-[82vh]"}`}>
+      <ScrollArea className={`${category=="all"?"h-[75vh]":"h-[82vh]"}`}>
 
             <Table>
                   <TableHeader className="bg-yellow-300 text-black">
