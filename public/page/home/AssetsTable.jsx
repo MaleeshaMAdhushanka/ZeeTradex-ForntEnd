@@ -5,6 +5,7 @@ import { AvatarImage } from "@radix-ui/react-avatar";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { getCoinList } from "@/State/Coin/Action";
 
 const AssetTable = ({coin, category}) => {
 
@@ -12,6 +13,8 @@ const AssetTable = ({coin, category}) => {
  const dispatch = useDispatch()
 
   const navigate = useNavigate()
+
+  
 
     return(
       <ScrollArea className={`${category=="all"?"h-[74vh]":"h-[82vh]"}`}>

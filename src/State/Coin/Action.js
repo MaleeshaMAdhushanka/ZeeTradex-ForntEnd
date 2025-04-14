@@ -1,6 +1,7 @@
 import api, { API_BASE_URL } from "@/config/api";
-import { FETCH_COIN_BY_ID_REQUEST, FETCH_COIN_BY_ID_SUCCESS, FETCH_COIN_DETAILS_FAILURE, FETCH_COIN_DETAILS_REQUEST, FETCH_COIN_DETAILS_SUCCESS, FETCH_COIN_LIST_FAILURE, FETCH_COIN_LIST_REQUEST, FETCH_COIN_LIST_SUCCESS, FETCH_MARKET_CHART_FAILURE, FETCH_MARKET_CHART_REQUEST, FETCH_MARKET_CHART_SUCCESS, FETCH_TOP_50_COINS_FAILURE, FETCH_TOP_50_COINS_REQUEST, FETCH_TOP_50_COINS_SUCCESS, SEARCH_COIN_FAILURE, SEARCH_COIN_REQUEST, SEARCH_COIN_SUCCESS } from "./ActionType";
+import { FETCH_COIN_BY_ID_FAILURE, FETCH_COIN_BY_ID_REQUEST, FETCH_COIN_BY_ID_SUCCESS, FETCH_COIN_DETAILS_FAILURE, FETCH_COIN_DETAILS_REQUEST, FETCH_COIN_DETAILS_SUCCESS, FETCH_COIN_LIST_FAILURE, FETCH_COIN_LIST_REQUEST, FETCH_COIN_LIST_SUCCESS, FETCH_MARKET_CHART_FAILURE, FETCH_MARKET_CHART_REQUEST, FETCH_MARKET_CHART_SUCCESS, FETCH_TOP_50_COINS_FAILURE, FETCH_TOP_50_COINS_REQUEST, FETCH_TOP_50_COINS_SUCCESS, SEARCH_COIN_FAILURE, SEARCH_COIN_REQUEST, SEARCH_COIN_SUCCESS } from "./ActionType";
 import axios from "axios";
+import { data } from "react-router-dom";
 
 //mulima acces kara page parameter eka
 export const getCoinList = (page) => async(dispatch) => {
@@ -17,25 +18,12 @@ export const getCoinList = (page) => async(dispatch) => {
 
       dispatch({type:FETCH_COIN_LIST_SUCCESS, payload:data});
 
-
     } catch (error) {
-        if (error.response && error.response.status === 429) {
-            console.error("Rate limit exceeded. Please try again later.");
-            dispatch({type:FETCH_COIN_LIST_FAILURE, payload:"Rate limit exceeded. Please try again later."});
+        dispatch({type:FETCH_COIN_LIST_FAILURE, payload: error.message});
 
-            setTimeout(() => {
-                dispatch(getCoinList(page));
-            }, 60000);
+          console.log(error);
 
-        } else{
-            console.error("Error fetching coin list :",error);
-            dispatch({type:FETCH_COIN_LIST_FAILURE, payload:error.message});
-
-
-        }
-    }
-
-
+        } 
 };
 
 //get top 50 coin list
@@ -70,6 +58,7 @@ export const getTop50CoinList = () => async(dispatch) => {
 };
 
 export const fetchMarketChart = ({coinId, days, jwt}) => async (dispatch) => {
+    
     dispatch({type:FETCH_MARKET_CHART_REQUEST});
 
     try {
@@ -95,14 +84,13 @@ export const fetchMarketChart = ({coinId, days, jwt}) => async (dispatch) => {
 export const fetchCoinById = (coinId) => async(dispatch) =>{
     dispatch({type:FETCH_COIN_BY_ID_REQUEST});
 
-
     try {
      const response = await axios.get(`${API_BASE_URL}/coins/${coinId}`); 
      dispatch({type:FETCH_COIN_BY_ID_SUCCESS, payload: response.data});
      console.log("Coin by id", response.data)       
     } catch (error) {
         console.log("error", error);
-        dispatch({type:FETCH_COIN_LIST_FAILURE, payload:error.message});
+        dispatch({type: FETCH_COIN_BY_ID_FAILURE, payload:error.message});
     }
 };
 //fetch coin details
@@ -145,7 +133,7 @@ export const searchCoin = (keyword) => async(dispatch) => {
     }
 
 
-}
+};
 
 
 

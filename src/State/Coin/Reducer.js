@@ -7,12 +7,13 @@ const initialState = {
     coinList: [],
     top50:[],
     searchCoinList: [],
-    marketChart: {data: [], loading: false},
+    marketChart: { data: [], loading: false, error: null,},
     coinById: null,
+    coinDetails: null,
     loading: false,
     error: null,
-
-}
+    
+};
 
 const coinReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -29,9 +30,8 @@ const coinReducer = (state = initialState, action) => {
         return {
             ...state,
             marketChart: {
-                loading: true,
-                data: []
-            },
+                loading: true, data: [] },
+                error: null,
         };
         
         //update coinList variable
@@ -55,12 +55,10 @@ const coinReducer = (state = initialState, action) => {
         case FETCH_MARKET_CHART_SUCCESS:
             return {
                 ...state,
-                marketChart: {
-                    data: action.payload.prices,
-                    loading: false
-                },
-                error: null,
-            };
+                marketChart: {data: action.payload.prices,loading: false },
+                    error: null,
+
+                };
 
         // case FETCH_COIN_BY_ID_SUCCESS:
         //     return {
@@ -90,11 +88,10 @@ const coinReducer = (state = initialState, action) => {
         case FETCH_MARKET_CHART_FAILURE:
             return {
                 ...state,
-                marketChart:{
-                    loading: false,
-                    data: [],
-                },
+                marketChart: { loading: false, data: [] },
+                error:null,
             };
+
          case FETCH_COIN_LIST_FAILURE:
          case SEARCH_COIN_FAILURE:
          case FETCH_COIN_BY_ID_FAILURE:

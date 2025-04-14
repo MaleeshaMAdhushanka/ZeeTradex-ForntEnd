@@ -9,7 +9,7 @@ const timeseries =[
     {
         keyword:"DIGITAL_CURRENCY_DAILY",
         key: "Time Series(Daily)",
-        lable: "1 Day",
+        label: "1 Day",
         value: 1,
 
     },
@@ -17,7 +17,7 @@ const timeseries =[
     {
         keyword:"DIGITAL_CURRENCY_WEEKLY",
         key: "Weekly Time Series",
-        lable: "1 Week",
+        label: "1 Week",
         value: 7,
        
 
@@ -26,8 +26,16 @@ const timeseries =[
     {
         keyword:"DIGITAL_CURRENCY_MONTHLY",
         key: "Monthly Time Series",
-        lable: "1 Month",
+        label: "1 Month",
         value: 30,
+
+    },
+
+    {
+        keyword:"DIGITAL_CURRENCY_Yearly",
+        key: "Year Time Series",
+        label: "1 year",
+        value: 365,
 
     },
 
@@ -40,7 +48,7 @@ const  StockChart = ({coinId}) => {
        const {coin} = useSelector(store => store)
 
 
-       const[activeLable, setActiveLable] = useState("1 Day")
+       const[activeLabel, setActiveLabel] = useState(timeseries[0]);
 
     const series =[
         {
@@ -103,10 +111,10 @@ const  StockChart = ({coinId}) => {
 
     };
 
-    const handleActiveLable =(value) => {
+    const handleActiveLabel =(value) => {
 
 
-        setActiveLable(value);
+        setActiveLabel(value);
 
     }
 
@@ -120,18 +128,23 @@ const  StockChart = ({coinId}) => {
     // </div>;
 
     useEffect(()=> {
-        dispatch(fetchMarketChart({coinId,days:30, jwt:localStorage.getItem("jwt")}))
-    },[dispatch, coinId, activeLable])
+        dispatch(fetchMarketChart({coinId,days:activeLabel.value, jwt:localStorage.getItem("jwt")}))
+    },[dispatch, coinId, activeLabel])
+
     return(
         <div style={{ width: "47vw", overflow:"hidden"}}>
 
             <div className="space-x-3">
-                {timeseries.map((item)=><Button 
-                variant={activeLable== item.lable ? "" : "outline"}
-                onClick={() =>handleActiveLable(item.lable)} key={item.lable}>
-                    {item.lable}
+                {timeseries.map((item)=> (
+                    <Button 
+                   variant={activeLabel== item.label ? "" : "outline"}
+                   onClick={() =>handleActiveLabel(item.label)} 
+                   key={item.label}
+                >
+                    {item.label}
 
-                </Button>)}
+                </Button>
+            ))}
 
             </div>
 
@@ -156,4 +169,4 @@ const  StockChart = ({coinId}) => {
     
 };
 
-export default StockChart
+export default StockChart;

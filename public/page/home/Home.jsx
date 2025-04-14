@@ -9,18 +9,27 @@ import { MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useDispatch, useSelector } from "react-redux";
 import { getCoinList, getTop50CoinList } from "@/State/Coin/Action";
-
+import {
+    Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
+  } from "@/components/ui/pagination"
+  
 const Home =() => {
     const [category, setCategory] = React.useState("all")
     const [inputValue, setInputValue] = React.useState("");
     //by deafult realase
-    const [isBotRealeace, setIsBotRealeace] = React.useState(false);
+    const [isBotRealease, setIsBotRealease] = React.useState(false);
 
     const {coin} = useSelector(store=> store);
 
     const dispatch = useDispatch()
 
-    const handleBotRealeace = () => setIsBotRealeace(!isBotRealeace);
+    const handleBotRealease = () => setIsBotRealease(!isBotRealease);
 
     //handle category
     const handleCategory = (value) => {
@@ -31,7 +40,7 @@ const Home =() => {
         setInputValue(e.target.value);
 
     };
-    const handeleKeyPress=(event) => {
+    const handleKeyPress=(event) => {
          if(event.key == "Enter"){
             console.log(inputValue)
          }
@@ -68,10 +77,28 @@ const Home =() => {
 
                     </div>
                     <AssetTable coin={category=="all"?coin.coinList:coin.top50} category={category}/>
+                    <div>
+                    <Pagination>
+                        <PaginationContent>
+                        <PaginationItem>
+                            <PaginationPrevious href="#" />
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationLink href="#">1</PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationEllipsis />
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationNext href="#" />
+                        </PaginationItem>
+                        </PaginationContent>
+                    </Pagination>
 
+                    </div>
                 </div>
                 <div className="hidden lg:block lg:w-[50%] p-5">
-                    <StockChart />
+                    <StockChart coinId={"bitcoin"} />
 
                     {/* Stock Market Card */}
                     <div className="flex gap-5 items-center mt-5">
@@ -112,12 +139,12 @@ const Home =() => {
             <section className="absolute bottom-5 right-5 z-40 flex flex-col justify-end items-end gap-2">
 
 
-            { isBotRealeace && <div className="rounded-md w-[20rem] md:w-[25rem] lg:w-[25rem] h-[70vh]
+            { isBotRealease && <div className="rounded-md w-[20rem] md:w-[25rem] lg:w-[25rem] h-[70vh]
               bg-slate-300">
                 <div className="flex justify-between items-center border-b px-6 h-
                 [12%]">
                   <p>Chat Bot</p>
-                   <Button onClick={handleBotRealeace} variant="ghost" size="icon">
+                   <Button onClick={handleBotRealease} variant="ghost" size="icon">
                     <Cross1Icon/>
                    </Button>
 
@@ -172,7 +199,7 @@ const Home =() => {
                     placeholder="write propmt"
                     onChange={handleChange}
                     value={inputValue}
-                    onKeyPress={handeleKeyPress}
+                    onKeyPress={handleKeyPress}
                     />
               
 
@@ -183,7 +210,7 @@ const Home =() => {
 
            <div className="relative w-[10rem] cursor-pointer group">
                 <Button 
-                  onClick={handleBotRealeace}
+                  onClick={handleBotRealease}
                 
                  className="w-full h-[3rem] gap-2 items-center">
                     <MessageCircle 
@@ -204,5 +231,5 @@ const Home =() => {
 
         </div>
     );
-}
+};
 export default Home;

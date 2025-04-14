@@ -78,19 +78,19 @@ useEffect(()=> {
                         {true ? (<BookmarkFilledIcon className="h-6 w-6"/>) : (<BookmarkIcon className="h-6 w-6"/> )}
                     </Button>
                     <Dialog>
-  <DialogTrigger>
-    <Button  size ="lg"className="">
-        Tread
-    </Button>
-  </DialogTrigger>
-  <DialogContent>
-    <DialogHeader>
-      <DialogTitle>How Much Do you want to spend?</DialogTitle>
-      
-    </DialogHeader>
-    <TreadingForm/>
-  </DialogContent>
-</Dialog>
+                        <DialogTrigger asChild>
+                        <Button  size ="lg"className="">
+                            Tread
+                        </Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>How Much Do you want to spend?</DialogTitle>
+                            
+                        </DialogHeader>
+                        <TreadingForm/>
+                        </DialogContent>
+                </Dialog>
 
                 </div>
 
