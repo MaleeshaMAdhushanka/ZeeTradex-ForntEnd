@@ -1,6 +1,5 @@
 import api from '@/config/api';
 import * as types from './ActionType';
-import { type } from 'os';
 
 
 export const payOrder = ({jwt, orderData, amount}) => async (dispatch) => {

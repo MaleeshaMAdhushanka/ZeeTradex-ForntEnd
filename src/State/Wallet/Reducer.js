@@ -8,7 +8,6 @@ const initialState = {
 
 const walletReducer = (state = initialState, action) => {
     switch (action.type) {
-        case value:
             case types.GET_USER_WALLET_REQUEST:
             case types.DEPOSIT_MONEY_REQUEST:
             case types.TRANSFER_MONEY_REQUEST:

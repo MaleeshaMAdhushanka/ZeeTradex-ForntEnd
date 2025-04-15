@@ -1,16 +1,62 @@
-import React, { useState } from "react"; // Added useState import
+import React, { useEffect, useState } from "react"; // Added useState import
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { BookmarkFilledIcon, BookmarkIcon, DotIcon } from "@radix-ui/react-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { getAssetDetails } from "@/State/Asset/Action";
+import { payOrder } from "@/State/Order/Action";
 
 
 const TreadingForm = () => {
     //buy default have buy
     const [orderType, setOrderType] = useState("BUY");
-    const handleChange=() => {
+    const[amount, setAmount] = useState(0);
+    const [quantity, setQuantity] = useState(0);
+    const { coin, wallet, asset } = useSelector(store => store);
+    const dispatch = useDispatch();
 
+    const handleChange=(e) => {
+      const amount = e.target.value;
+      setAmount(amount)
+      const volume = calculateBuyCost(
+        amount, 
+        coin.coinDetails.market_data.current_price.usd
+      );
+      console.log(volume)
+      setQuantity(volume)
     };
+    const calculateBuyCost = (amount, price) => {
+        let volume = amount/price
+    //   return (amount * price).toFixed(2);
+
+       let decimalPlaces = Math.max(2,price.toString().split(".")[0].length)
+
+       return volume.toFixed(decimalPlaces)
+    };
+
+    useEffect(() => {
+        dispatch(getUserWallet(localStorage.getItem("jwt")));
+        dispatch(
+            getAssetDetails({
+                coinId:coin.coinDetails.id, 
+                jwt:localStorage.getItem("jwt"),
+            })
+        );
+    },[]);
+
+    const handleBuyCrypto = () => {
+        dispatch(payOrder({jwt:localStorage.getItem("jwt"),
+             amount,
+           orderData: {
+            coinId:coin.coinDetails?.id,
+            quantity,
+            orderType,
+           },
+        })
+     );
+    };
+
     return(
         <div className="space-y-10 p-5 ">
             <div>
@@ -24,7 +70,7 @@ const TreadingForm = () => {
                     />
                     <div>
                         <p className="border text-2xl flex justify-center
-                        items-center w-36 h-14 rounded-md">4563</p>
+                        items-center w-36 h-14 rounded-md">{quantity}</p>
 
                     </div>
 
@@ -55,7 +101,7 @@ const TreadingForm = () => {
 
                         </div>
                         <div className="flex items-end gap-2">
-                            <p className="text-xl font-bold">$65554</p>
+                            <p className="text-xl font-bold">${coin.coinDetails?.market_data.current_price.usd}</p>
                             {/* market change 24 */}
                             <p className="text-red-600">
                                 
@@ -77,14 +123,16 @@ const TreadingForm = () => {
 
                     <p>{orderType=="BUY" ?"Available Case" : "Available Quantity"}</p>
                     <p>
-                        {orderType=="BUY" ?9000:23.08}
+                        {orderType=="BUY" ? "$" + wallet.userWallet?.balance : (asset.assetDetails?.quantity || 0)}
                     </p>
 
                     
 
                 </div>
                 <div>
-                    <Button className={`w-full py-6 
+                    <Button 
+                    onClick={handleBuyCrypto}
+                    className={`w-full py-6 
                         ${orderType =="SELL" ? "bg-red-600 text-white" : ""}`}>
                         {orderType}
 

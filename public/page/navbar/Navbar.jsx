@@ -80,7 +80,7 @@ const Navbar = () => {
                <div>
                     <Avatar>
                          <AvatarFallback>
-                              {auth.user?.fullName[0].toUpperCase()}
+                              {auth.user?.fullName?.[0]?.toUpperCase() || "?"}
                          </AvatarFallback>
 
                     </Avatar>

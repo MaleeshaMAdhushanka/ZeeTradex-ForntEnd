@@ -1,6 +1,5 @@
 import api from '@/config/api';
 import * as types from './ActionType';
-import { type } from 'os';
 
 export const getAssetById = ({assetId, jwt}) => async (dispatch) => {
    dispatch({ type: types.GET_ASSET_REQUEST});
@@ -41,6 +40,7 @@ export const getAssetDetails = ({ coinId, jwt}) => async (dispatch) => {
         });
         console.log("asset details ----", response.data);
     } catch (error) {
+        console.log("asset details -----", error);
         dispatch({
             type: types.GET_ASSET_DETAILS_FAILURE,
             payload: error.message,
@@ -53,7 +53,7 @@ export const getUserAssets = ({jwt}) => async (dispatch) => {
     dispatch({ type: types.GET_USER_ASSETS_REQUEST});
 
     try {
-        const response = await api.get("/api/assets", {
+        const response = await api.get("/api/asset", {
             headers: {
                 Authorization: `Bearer ${jwt}`,
             },
@@ -64,6 +64,7 @@ export const getUserAssets = ({jwt}) => async (dispatch) => {
         });
         console.log("user assets----", response.data);
     } catch (error) {
+        console.log("user assets -----", error.response?.data);
         dispatch({
             type: types.GET_USER_ASSETS_FAILURE,
             error: error.message,

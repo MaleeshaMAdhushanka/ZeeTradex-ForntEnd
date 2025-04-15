@@ -1,6 +1,5 @@
 import api from '@/config/api';
 import * as types from './ActionType';
-import { type } from 'os';
 
 export const withdrawalRequest =({ amount, jwt}) => async (dispatch)=> {
     dispatch({type: types.WITHDRAWAL_REQUEST});

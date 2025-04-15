@@ -30,6 +30,7 @@ const rootReducer = combineReducers({
     withdrawal: withdrawalReducer,
     order: orderReducer,
     asset:assetReducer,
+    watchlist: walletReducer,
 });
 
 //create our store

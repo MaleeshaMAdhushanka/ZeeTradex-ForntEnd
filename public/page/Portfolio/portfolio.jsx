@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Avatar } from "@/components/ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserAssets } from "@/State/Asset/Action";
 
 const Portfolio = () => {
+
+  const dispatch = useDispatch();
+  const { asset } = useSelector(store => store)
+
+  useEffect(() => {
+    dispatch(getUserAssets(localStorage.getItem("jwt")));
+  }, [])
 
     return (
         <div className="p-5 lg:px-10 bg-dark-500  font-bold">
@@ -32,21 +41,22 @@ const Portfolio = () => {
                    </TableRow>
               </TableHeader>
             <TableBody>
-                {[1,1,1,1,1,1,1,1,1,1,1].map((item,index) =>( <TableRow key={index}>
+                {asset.userAssets.map((item,index) =>( <TableRow key={index}>
                    <TableCell className="font-medium flex items-center gap-2">
                       <Avatar className="-z-50">
-
-                        <AvatarImage src="https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"/>
+                        <AvatarImage
+                         src={item.coin.image}/>
                            
                       </Avatar>
-                      <span>Bitcoin</span>
+                      <span>{item.coin.name}Bitcoin</span>
                         
         
                     </TableCell>
-                   <TableCell>BTC</TableCell>
-                   <TableCell>32652127595</TableCell>
-                   <TableCell>1660363443420</TableCell>                
-                  <TableCell className="text-right">$83686</TableCell>
+                   <TableCell>{item.coin.symbol.toUpperCase()}BTC</TableCell>
+                   <TableCell>{item.quantity}</TableCell>
+                   <TableCell>{item.coin.price_change_24h}</TableCell>
+                   <TableCell>{item.coin.price_change_percentage_24h}</TableCell>                
+                  <TableCell className="text-right">{item.coin.total_volume}</TableCell>
               </TableRow>
               ))}
               
