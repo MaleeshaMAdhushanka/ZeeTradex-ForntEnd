@@ -8,20 +8,48 @@ import WithdrawalForm from "./WithdrawalForm";
 import TransferForm from "./TransferForm";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserWallet } from "@/State/Wallet/Action";
+import { depositMoney, getUserWallet, getWalletTransaction } from "@/State/Wallet/Action";
+import { useLocation, useNavigate } from "react-router-dom";
+
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+}
 
 export const Wallet = () => {
- const  dispatch = useDispatch();
- const {wallet} = useSelector(store => store)
 
- //invorking get user wallet
- useEffect(() => {
-  handleFetchUserWallet();
- },[])
- 
+    const  dispatch = useDispatch();
+    const {wallet} = useSelector(store => store)
+    const query = useQuery()  //ordeId access
+    const orderId = query.get("order_id");
+    const paymentId = query.get("payment_id");//stripe
+    const razorpayPaymentId= query.get("razorpay_payment_id");
+    const navigate = useNavigate();
+
+    //invorking get user wallet
+
+    useEffect(() => {
+    handleFetchUserWallet();
+    handleFetchWalletTransaction();
+    },[])
+
+    useEffect(() => {
+       if (orderId) {
+        dispatch(depositMoney({jwt:localStorage.getItem("jwt"),
+            orderId,
+            paymentId:razorpayPaymentId || paymentId,
+            navigate
+        }))
+       }
+
+    },[orderId, paymentId, razorpayPaymentId])
+    
  const handleFetchUserWallet = () => {
     dispatch(getUserWallet(localStorage.getItem("jwt")))
- }
+ };
+
+ const handleFetchWalletTransaction = () => {
+    dispatch(getWalletTransaction({jwt:localStorage.getItem("jwt")}))
+ };
     return(
         <div className="flex flex-col items-center">
 
@@ -36,7 +64,7 @@ export const Wallet = () => {
                                 <CardTitle className="text-2xl">My Wallet</CardTitle>
                                 <div className="flex items-center gap-2">
                                     <p className="text-dark-200 text-sm">
-                                        #A475Ed
+                                        #{wallet.userWallet?.id}
                                     </p>
                                     <CopyIcon size={15} 
                                     className="cursor-pointer hover:text-blue-300" />
@@ -168,11 +196,11 @@ export const Wallet = () => {
                     
                     <div className="space-y-5">
                       {/* dummy array */}
-                        {[1, 1, 1, 1, 1, 1, 1].map((item, i)=>(<div key={i}>
+                        {wallet.transaction.map((item, i)=>(<div key={i}>
                            <Card className=" px-5 justify-between items-center p-2">
 
                             <div className="flex items-center gap-60">
-                                <Avatar>
+                                <Avatar onClick={handleFetchWalletTransaction}>
                                     <AvatarFallback>
                                         <ShuffleIcon className=""/>
 
@@ -181,13 +209,13 @@ export const Wallet = () => {
                                 </Avatar>
 
                                 <div className="space-y-1">
-                                    <h1>Buy Asset</h1>
-                                    <p className="text-sm text-gray-500">2025-04-04</p>
+                                    <h1>{item.type || item.purpose}</h1>
+                                    <p className="text-sm text-gray-500">{item.date}</p>
 
                                 </div>
 
                                 <div>
-                                    <p className={`text-green-500`}>999 USD</p>
+                                    <p className={`text-green-500`}>{item.amount} USD</p>
                                 </div>
 
                             </div>
