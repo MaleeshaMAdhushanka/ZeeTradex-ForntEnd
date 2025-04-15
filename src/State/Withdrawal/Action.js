@@ -51,7 +51,7 @@ export const proceedWithdrawal = ({id, jwt, accept}) => async (dispatch) => {
 };
 
 
-export const getWithdrwalHisttory =({jwt}) => async (dispatch) => {
+export const getWithdrawalHistory =({jwt}) => async (dispatch) => {
     dispatch({type: types.GET_WITHDRAWAL_HISTORY_REQUEST});
 
     try {
@@ -102,6 +102,7 @@ export const getAllWithdrawalRequest = ({jwt}) => async (dispatch) => {
     }
 };
 
+//req body
 export const addPaymentDetails = ({paymentDetails, jwt}) => async (dispatch) => {
     dispatch({ type: types.ADD_PAYMENT_DETAILS_REQUEST});
 
@@ -111,7 +112,7 @@ export const addPaymentDetails = ({paymentDetails, jwt}) => async (dispatch) => 
                 Authorization: `Bearer ${jwt}`,
             }
         });
-        console.log("withdrawal -----", response.data)
+        console.log("add PaymentDetails -----", response.data)
         dispatch({
             type: types.ADD_PAYMENT_DETAILS_SUCCESS,
             payload: res

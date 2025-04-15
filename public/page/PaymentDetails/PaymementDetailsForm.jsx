@@ -10,9 +10,14 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { addPaymentDetails } from "@/State/Withdrawal/Action";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 const PaymentDetailsForm = () => {
+
+    const dispatch = useDispatch();
+
     const form = useForm({
         defaultValues: {
             accountHolderName: "",
@@ -24,6 +29,10 @@ const PaymentDetailsForm = () => {
     });
 
     const onSubmit = (data) => {
+        dispatch(addPaymentDetails({
+            paymentDetails:data,
+            jwt:localStorage.getItem("jwt")
+        }))
         console.log(data);
     };
 

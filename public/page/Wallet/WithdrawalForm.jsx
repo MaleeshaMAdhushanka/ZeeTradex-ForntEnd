@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { DialogClose } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { withdrawalRequest } from "@/State/Withdrawal/Action";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,13 +9,15 @@ import { useDispatch, useSelector } from "react-redux";
 const WithdrawalForm = () => {
      const [amount, setAmount] = React.useState("");  
      const  dispatch = useDispatch();
-     const {wallet} = useSelector(store => store)
+     const {wallet, withdrawal} = useSelector(store => store)
     
     const handleChange = (e) => {
             setAmount(e.target.value); 
     };
 
     const handleSubmit = () => {
+      //withdrawal  request
+      dispatch(withdrawalRequest({amount, jwt:localStorage.getItem("jwt")}))
         console.log(amount);
     };
     
@@ -55,8 +58,8 @@ const WithdrawalForm = () => {
                      className="h-15 w-15 rounded-full"
                     src="https://cdn.pixabay.com/photo/2020/02/18/11/03/bank-4859142_1280.png" alt="bankImage" />
                     <div>
-                      <p className="text-xl font-bold">Yes Bank</p>
-                      <p className="text-x5">**** **** 1651</p>
+                      <p className="text-xl font-bold">Yes Bank {withdrawal.paymentDetails?.bankName}</p>
+                      <p className="text-x5">{withdrawal.paymentDetails?.accountNumber}</p>
 
                     </div>
 
