@@ -89,8 +89,8 @@ Comprehensive API documentation (including endpoints, request/response formats, 
 
 ---
 
-## 🌐 Frontend Repository  
-This is the official frontend repository for the ZeeTradeX cryptocurrency trading platform:  
-🔗 [**ZeeTradeX Frontend on GitHub**](https://github.com/MaleeshaMAdhushanka/ZeeTradex-ForntEnd.git)
+## 🌐 BackEnd Repository  
+This is the official backend repository for the ZeeTradeX cryptocurrency trading platform:  
+🔗 [**ZeeTradeX BackEnf on GitHub**](https://github.com/MaleeshaMAdhushanka/X-BackEnd.git)
 
    ```
