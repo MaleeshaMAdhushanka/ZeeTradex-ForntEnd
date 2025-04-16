@@ -77,18 +77,20 @@ Users can view real-time crypto prices (via CoinGecko API), buy/sell assets, man
 
 
 
-### Class Structure
-The class diagram showing the system's architecture and relationships can be found here:
-[View Class Diagram](./src/assets/zeexmax.png)
+## 🧩 Class Structure  
+A visual overview of the system’s architecture and class relationships is available here:  
+📌 [**View Class Diagram**](./src/assets/zeexmax.png)
 
-## API Documentation
+---
 
-Detailed API documentation is available through Postman:
-[View API Documentation](https://documenter.getpostman.com/view/37889199/2sB2cbaeW5)
+## 📚 API Documentation  
+Comprehensive API documentation (including endpoints, request/response formats, and usage) is available via Postman:  
+🌐 [**View API Documentation**](https://documenter.getpostman.com/view/37889199/2sB2cbaeW5)
 
-## BackEnd Repository
+---
 
-The backend repository for this project can be found here:
-[Zee Tradex Backend](https://github.com/MaleeshaMAdhushanka/ZeeTradex-ForntEnd.git)
+## 🌐 Frontend Repository  
+This is the official frontend repository for the ZeeTradeX cryptocurrency trading platform:  
+🔗 [**ZeeTradeX Frontend on GitHub**](https://github.com/MaleeshaMAdhushanka/ZeeTradex-ForntEnd.git)
 
    ```
