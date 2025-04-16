@@ -22,8 +22,8 @@ const PaymentDetails = () => {
        dispatch(getPaymentDetails({jwt:localStorage.getItem("jwt")}))
    }, [])
     return(
-        <div className="px-20 ">
-             <h1 className="text-3xl font-bold py-15 ">Payment Details</h1>
+        <div className="px-20 bg-yellow-300 ">
+             <h1 className="text-3xl font-bold py-15  ">Payment Details</h1>
 {/* if user have already add their payment detail once i will not allow him to add payment detail agin
   user haven't add their payment detail then i will show him the add payment detail button
 */}

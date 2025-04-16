@@ -9,7 +9,7 @@ import { GET_USER_FAILURE, GET_USER_REQUEST, GET_USER_SUCCESS, LOGIN_FAILURE, LO
 //resgiter eka post method ekak nisa
 
 //send action to the store using dispatch
-export const register =(userData) => async(dispatch) =>{
+export const register =(userData) => async (dispatch) =>{
 
     dispatch({type:REGISTER_REQUEST});
     
@@ -81,6 +81,8 @@ export const getUser =(jwt) => async(dispatch) =>{
         }
       });
       const user = response.data;
+      console.log("JWT:", jwt);
+     console.log("User data from API:", response.data);
       console.log(user);
 
       //register sucess-since we have data
@@ -100,7 +102,7 @@ export const getUser =(jwt) => async(dispatch) =>{
 export const logout = () => (dispatch) => {
   localStorage.clear();
   // Clear the JWT from whole local storage
-dispatch({ type:LOGOUT})
+dispatch({ type:LOGOUT});
 
 };
 

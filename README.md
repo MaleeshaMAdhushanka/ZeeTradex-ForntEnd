@@ -1,12 +1,94 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ZeeTradeX Frontend - React + Vite.js + Shadcn UI
 
-Currently, two official plugins are available:
+## 📘 Project Description
+This is the frontend of the **ZeeTradeX** cryptocurrency trading platform, built using **React.js** with **Vite.js** for fast development and performance. The UI is styled with the **Shadcn UI** library, and the frontend communicates with the Spring Boot backend via REST APIs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Users can view real-time crypto prices (via CoinGecko API), buy/sell assets, manage their portfolio, and more.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Key Features
+
+- 🚀 **Built with Vite.js** for lightning-fast development
+- 💅 **Shadcn UI** components for a sleek, modern interface
+- 🔒 **User Authentication** (Register, Login, Forgot Password)
+- 📊 **Trading Dashboard** with real-time crypto prices
+- 💰 **Buy/Sell Crypto** and portfolio management
+- 👤 **Profile management** for user information
+
+---
+
+## 📸 Screenshots
+
+### 📝 Register Page
+![Register Page](./src/assets/signup.png)
+
+### 🔐 Login Page
+![Login Page](./src/assets/Login.png)
+
+### 🔑 Forgot Password Page
+![Forgot Password Page](./src/assets/ForgotPassword.png)
+
+### 🏠 Home Page
+![Home Page](./src/assets/Home.png)
+
+### 📈 Trading Dashboard
+![Trading Dashboard](./src/assets/treadingDashBorda.png)
+
+### 📊 Coin Chart Page (e.g., Ethereum)
+![Ethereum Page](./src/assets/EthereumCoinPage.png)
+
+### 💳 Payment Details Page
+![Payment Page](./src/assets/payementdetails.png)
+
+---
+
+## 🛠️ Setup Instructions
+
+### 🧩 Prerequisites
+- Node.js v16+ and npm
+- Vite.js
+- Internet connection (for CoinGecko API)
+- Backend running (Spring Boot)
+
+---
+
+### 🔧 Installation & Running
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/MaleeshaMAdhushanka/ZeeTradex-ForntEnd.git
+
+   cd ZeeTradex-ForntEnd
+
+   
+2. **Install dependencies:**:
+
+ ```bash
+  npm install
+
+   npm run dev
+   
+   
+
+## Project Documentation
+
+
+
+### Class Structure
+The class diagram showing the system's architecture and relationships can be found here:
+[View Class Diagram](./src/assets/zeexmax.png)
+
+## API Documentation
+
+Detailed API documentation is available through Postman:
+[View API Documentation](https://documenter.getpostman.com/view/37889199/2sB2cbaeW5)
+
+## BackEnd Repository
+
+The backend repository for this project can be found here:
+[Zee Tradex Backend](https://github.com/MaleeshaMAdhushanka/ZeeTradex-ForntEnd.git)
+
+   ```

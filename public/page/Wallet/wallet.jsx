@@ -94,8 +94,8 @@ export const Wallet = () => {
                         <div className="flex gap-7 mt-5">
                             
                             <Dialog>
-                                <DialogTrigger>
-                                    <div className="h-24 w-24 hover:text-blue-400 cursor-pointer
+                                <DialogTrigger className="bg-blue-500 text-white hover:bg-yellow-500">
+                                    <div className="h-24 w-24 hover:text-black cursor-pointer
                                     flex flex-col items-center justify-center rounded-md
                                      shadow-sky-800 shadow-md">
 
@@ -122,8 +122,8 @@ export const Wallet = () => {
 
                             </Dialog>
                             <Dialog>
-                                <DialogTrigger>
-                                    <div className="h-24 w-24 hover:text-blue-400 cursor-pointer
+                                <DialogTrigger className="bg-yellow-300 text-black hover:bg-green-500">
+                                    <div className="h-24 w-24 hover:text-black-400 cursor-pointer
                                     flex flex-col items-center justify-center rounded-md
                                      shadow-sky-800 shadow-md">
 
@@ -150,8 +150,8 @@ export const Wallet = () => {
 
                             </Dialog>
                             <Dialog>
-                                <DialogTrigger>
-                                    <div className="h-24 w-24 hover:text-blue-400 cursor-pointer
+                                <DialogTrigger className="bg-yellow-300 text-black hover:bg-green-500">
+                                    <div className="h-24 w-24 hover:text-black-400 cursor-pointer
                                     flex flex-col items-center justify-center rounded-md
                                      shadow-sky-800 shadow-md">
 

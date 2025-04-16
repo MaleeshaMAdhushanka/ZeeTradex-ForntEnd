@@ -37,8 +37,9 @@ const PaymentDetailsForm = () => {
     };
 
     return (
-        <div className="px-10 py-2">
-            <Form {...form}>
+        <div className="px-10 py-2 bg-yellow-400 text-black">
+            <Form
+             {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-6"
@@ -135,7 +136,7 @@ const PaymentDetailsForm = () => {
                
                {/* click karama close wenna */}
                     <DialogClose className="w-full">
-                       <Button type="submit" className="w-full py-5">
+                       <Button type="submit" className="w-full py-5 bg-blue-500 hover:bg-green-400">
                         Submit
 
 

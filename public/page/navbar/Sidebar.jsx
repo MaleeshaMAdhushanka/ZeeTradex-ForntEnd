@@ -45,14 +45,14 @@ const Sidebar = () => {
         }
 
     return(
-        <div className="mt-1 space-y-4">
+        <div className="mt-2 space-y-3 ">
             {menu.map((item)=> (
                 <div key={item.name}>
-                  <SheetClose className="w-full">
+                  <SheetClose asChild>
 
                    <Button 
                     variant="primary" 
-                     className="flex items-center gap-4 py-6 px-10 w-full h-7 text-lg bg-black hover:bg-gray-700"
+                     className="flex items-center gap-3 py-6 px-10 w-full h-7 text-lg bg-black hover:bg-blue-600"
                      onClick={() => {
                         navigate(item.path)
                         if (item.name=="Logout") {
@@ -62,7 +62,7 @@ const Sidebar = () => {
                      >
 
                      <span className="w-8">{item.icon}</span>
-                     <p className="text-blue-600">{item.name}</p>
+                     <p className="text-yellow-500">{item.name}</p>
 
                     </Button>
 
@@ -79,4 +79,4 @@ const Sidebar = () => {
 
 };
 
-export default Sidebar
+export default Sidebar;

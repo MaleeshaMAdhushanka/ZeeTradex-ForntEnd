@@ -86,7 +86,7 @@ const handleAddToWatchlist =()=> {
                 </div>
                 <div className="flex items-center gap-4">
                     <Button onClick= {handleAddToWatchlist}>
-                          {existInWatchlist(watchlist.items, coin.coinDetails) ? (
+                          {Array.isArray(watchlist?.items) && existInWatchlist(watchlist.items, coin.coinDetails) ? (
                            <BookmarkFilledIcon className="h-6 w-6"/>
                           ) : (
                            <BookmarkIcon className="h-6 w-6"/>

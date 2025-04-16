@@ -24,8 +24,8 @@ const Profile = () => {
     }
     return(
         <div className="flex flex-col items-center mb-5">
-            <div className="pt-10 w-full lg:w-[70%]">
-                <Card>
+            <div className="pt-10 w-full lg:w-[70%] ">
+                <Card className="bg-yellow-300 text-black">
                     <CardHeader className="pb-7">
                         <CardTitle>Your Information</CardTitle>
                     </CardHeader>
@@ -35,17 +35,17 @@ const Profile = () => {
                                 <div className="flex">
                                     <p className="w-[8rem]">Email :</p>
                                     {/* if user null unoth dont do it */}
-                                    <p className="text-blue-400">{auth.user?.email}</p>
+                                    <p className="text-white">{auth.user?.email}</p>
 
                                 </div>
                                 <div className="flex">
                                     <p className="w-[8rem]">Full Name : </p>
-                                    <p className="text-blue-400">{auth.user?.fullName}</p>
+                                    <p className="text-white">{auth.user?.fullName}</p>
 
                                 </div>
                                 <div className="flex">
                                     <p className="w-[8rem]">Date of Birth : </p>
-                                    <p className="text-blue-400">2/02/1998</p>
+                                    <p className="text-green-800">2/02/1998</p>
 
                                 </div>
                                 <div className="flex">
@@ -53,11 +53,7 @@ const Profile = () => {
                                     <p className="text-blue-400">Srilankan</p>
 
                                 </div>
-                                <div className="flex">
-                                    <p className="w-[8rem]">Mobile : </p>
-                                    <p className="text-blue-400">Srilankan</p>
-
-                                </div>
+                           
 
                             </div>
                             <div className='space-y-7'>
@@ -71,16 +67,7 @@ const Profile = () => {
                                     <p className="text-blue-400">Maleesha Madushanka</p>
 
                                 </div>
-                                <div className="flex">
-                                    <p className="w-[8rem]">Postcode : </p>
-                                    <p className="text-blue-400">2/02/2025</p>
-
-                                </div>
-                                <div className="flex">
-                                    <p className="w-[8rem]">Country : </p>
-                                    <p className="text-blue-400">Srilankan</p>
-
-                                </div>
+                                
 
                             </div>
 

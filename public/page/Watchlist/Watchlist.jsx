@@ -12,7 +12,8 @@ import { existInWatchlist } from "@/utils/existInWatchlist";
 const Watchlist = () => {
   const {watchlist} = useSelector(store => store)
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
     const handleRemoveToWatchlist =(value) => {
       dispatch(addItemToWatchlist({coinId:value, jwt:localStorage.getItem("jwt")}));
 
@@ -51,7 +52,7 @@ const Watchlist = () => {
                 </TableRow>
             </TableHeader>
                         <TableBody>
-                            {watchlist.items.map((item,index) => (
+                            {watchlist?.items?.length > 0 && watchlist.items.map((item,index) => (
 
                              <TableRow key={index}>
                                <TableCell className="font-medium flex items-center gap-2">

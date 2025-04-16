@@ -1,6 +1,5 @@
 import api from '@/config/api';
 import * as types from './ActionType';
-import { type } from 'os';
 
 export const getUserWatchlist = (jwt) => async (dispatch) => {
    dispatch({ type: types.GET_USER_WATCHLIST_REQUEST});
