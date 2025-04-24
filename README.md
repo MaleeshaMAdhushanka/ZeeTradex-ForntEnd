@@ -11,6 +11,7 @@ Users can view real-time crypto prices (via CoinGecko API), buy/sell assets, man
 ## ▶️ Project Demo (YouTube)
 
 [![Watch the demo](https://img.youtube.com/vi/GpCEurOzY-s/0.jpg)](https://youtu.be/GpCEurOzY-s)
+(https://youtu.be/GpCEurOzY-s)
 
 ## ✨ Key Features
 
