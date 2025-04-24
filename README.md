@@ -8,6 +8,9 @@ This is the frontend of the **ZeeTradeX** cryptocurrency trading platform, built
 Users can view real-time crypto prices (via CoinGecko API), buy/sell assets, manage their portfolio, and more.
 
 ---
+## ▶️ Project Demo (YouTube)
+
+[![Watch the demo](https://img.youtube.com/vi/GpCEurOzY-s/0.jpg)](https://youtu.be/GpCEurOzY-s)
 
 ## ✨ Key Features
 
@@ -54,6 +57,7 @@ Users can view real-time crypto prices (via CoinGecko API), buy/sell assets, man
 - Backend running (Spring Boot)
 
 ---
+
 
 ### 🔧 Installation & Running
 
